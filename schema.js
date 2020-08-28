@@ -20,6 +20,18 @@ const AuthorType = new GraphQLObjectType({
 		name: { type: GraphQLString },
 	}),
 });
+const FullType = new GraphQLObjectType({
+	name: 'full',
+	fields: () => ({
+		url: { type: GraphQLString },
+	}),
+});
+const ThumbnailType = new GraphQLObjectType({
+	name: 'thumbnail',
+	fields: () => ({
+		full: { type: FullType },
+	}),
+});
 
 const PostsType = new GraphQLObjectType({
 	name: 'posts',
@@ -29,7 +41,7 @@ const PostsType = new GraphQLObjectType({
 		date: { type: GraphQLString },
 		categories: { type: new GraphQLList(CategoryType) },
 		author: { type: AuthorType },
-		thumbnail: { type: GraphQLString },
+		thumbnail_images: { type: ThumbnailType },
 	}),
 });
 
@@ -41,7 +53,7 @@ const Category = new GraphQLObjectType({
 		date: { type: GraphQLString },
 		categories: { type: new GraphQLList(CategoryType) },
 		author: { type: AuthorType },
-		thumbnail: { type: GraphQLString },
+		thumbnail_images: { type: ThumbnailType },
 	}),
 });
 
@@ -53,7 +65,7 @@ const PostType = new GraphQLObjectType({
 		date: { type: GraphQLString },
 		categories: { type: new GraphQLList(CategoryType) },
 		author: { type: AuthorType },
-		thumbnail: { type: GraphQLString },
+		thumbnail_images: { type: ThumbnailType },
 		content: { type: GraphQLString },
 	}),
 });
