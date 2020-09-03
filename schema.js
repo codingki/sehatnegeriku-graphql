@@ -125,7 +125,7 @@ const RootQuery = new GraphQLObjectType({
 			resolve(parent, args) {
 				return axios
 					.get(
-						`http://sehatnegeriku.kemkes.go.id/api/get_search_results/?search${args.search}/?count=${args.count}&page=${args.page}`
+						`http://sehatnegeriku.kemkes.go.id/api/get_search_results/?search=${args.search}&count=${args.count}&page=${args.page}/`
 					)
 					.then((res) => res.data.posts);
 			},
