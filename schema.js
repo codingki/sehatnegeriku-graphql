@@ -115,6 +115,21 @@ const RootQuery = new GraphQLObjectType({
 					.then((res) => res.data.post);
 			},
 		},
+		search: {
+			type: new GraphQLList(PostsType),
+			args: {
+				count: { type: GraphQLInt },
+				page: { type: GraphQLInt },
+				search: { type: GraphQLString },
+			},
+			resolve(parent, args) {
+				return axios
+					.get(
+						`http://sehatnegeriku.kemkes.go.id/api/get_search_results/?search${args.search}/?count=${args.count}&page=${args.page}`
+					)
+					.then((res) => res.data.posts);
+			},
+		},
 	},
 });
 
