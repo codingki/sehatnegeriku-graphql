@@ -55,6 +55,7 @@ const Category = new GraphQLObjectType({
 		categories: { type: new GraphQLList(CategoryType) },
 		author: { type: AuthorType },
 		thumbnail_images: { type: ThumbnailType },
+		content: { type: GraphQLString },
 	}),
 });
 
